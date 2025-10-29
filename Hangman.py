@@ -72,10 +72,12 @@ words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar '
          'stork swan tiger toad trout turkey turtle weasel whale wolf '
          'wombat zebra ').split()
 guess = ""
-placeholder = ""
 word = random.choice(words)
 word_leng = len(word)
 word_len_guessed = 0
+placeholder = ""
+for i in range(0,word_leng):
+    placeholder += "_"
 print(word, word_leng)
 
 # TODO - Create End game message, Win message
@@ -93,9 +95,6 @@ def end_message():
 # TODO - Print number of characters to the screen that is in the choosen word and ask the user for input, input error handling
 def guessing():
     global placeholder, guess
-    for i in range(0,word_leng):
-        placeholder += "_ "
-        
     print(f"Your word: {placeholder}")
 
     guess = input("Enter your guess character: \n")
@@ -140,14 +139,7 @@ def correct_guess():
     word_len_guessed += 1
     print("You guessed correctly.")
     position = word.index(guess)
-    placeholder = ""
-    for i in range(0, word_leng):
-        if i == position:
-            placeholder += guess + " "
-        else:
-            placeholder += "_ "
-
-    print(f"Your word: {placeholder}")
+    word[position] = guess
 
 # TODO - welcome user, main logic
 print(f"Welcome to the game of handman! Below you will need to figure out a random word by guessing characters in it.\n You will see _ _ representing each character in the word. If the character you choice is in the word, it will be releaved, if you miss, one life will be deduced. \n You have {life} lifes in the beginning, if it reaches 0, you lost. Good luck!")
