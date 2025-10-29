@@ -138,6 +138,8 @@ def correct_guess():
     global guess, word, placeholder, word_leng, word_len_guessed
     word_len_guessed += 1
     print("You guessed correctly.")
+    # Issue with adding guessed charaters to placeholder
+    # Issue with multiple characters in the same word eg. baboon - o
     position = word.index(guess)
     word[position] = guess
 
