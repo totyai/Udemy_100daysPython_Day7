@@ -91,6 +91,7 @@ def end_message():
 
 # TODO - Print number of characters to the screen that is in the choosen word and ask the user for input, input error handling
 def guessing():
+    global placeholder, guess
     for i in range(0,word_leng):
         placeholder += "_ "
         
@@ -107,6 +108,7 @@ def guessing():
 
 # TODO - Validate input, check agenst already given character list
 def char_used():
+    global guess, used_characters
     while guess in used_characters:
         guess = input("You have already used this character. You can select another: \n")
     used_characters.append(guess)
@@ -115,6 +117,7 @@ def char_used():
 
 # TODO - Check if the character is in the word
 def char_word_check():
+    global guess, word
     if guess in word:
         correct_guess()
     else:
@@ -124,13 +127,15 @@ def char_word_check():
 
 # TODO - NO, inform user that it is not in, lose life, call in hangman drawing, check life and end game
 def incorrect_guess():
+    global life, hangman_draw
     life -= 1
     print(f"Your guess is incorrect! You loose a life. Your life remaining: {life}")
     print(f"{hangman_draw[f'stage{life}']}")
 
   
 # TODO - YES, reveale letter's placement, evaluate full guessed, congratulate user, end game
-def correct_guess(guess, word, placeholder, word_leng):
+def correct_guess():
+    global guess, word, placeholder, word_leng
     print("You guessed correctly.")
     position = word.index(guess)
     placeholder = ""
