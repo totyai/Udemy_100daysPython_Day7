@@ -41,7 +41,7 @@ hangman_draw = {"stage6":
   +---+
   |   |
   O   |
- /|\  |
+ /|\\  |
       |
       |
 =========''', 
@@ -49,16 +49,16 @@ hangman_draw = {"stage6":
   +---+
   |   |
   O   |
- /|\  |
+ /|\\  |
  /    |
       |
 =========''', 
-"dead":'''
+"stage0":'''
   +---+
   |   |
   O   |
- /|\  |
- / \  |
+ /|\\  |
+ / \\  |
       |
 ========='''}
 used_characters = []
@@ -72,13 +72,12 @@ words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar '
          'stork swan tiger toad trout turkey turtle weasel whale wolf '
          'wombat zebra ').split()
 guess = ""
-word = "baboon" #random.choice(words)
+word = random.choice(words)
 word_leng = len(word)
 word_len_guessed = 0
 placeholder = ""
 for i in range(0,word_leng):
     placeholder += "_"
-print(word, word_leng)
 
 # TODO - Create End game message, Win message
 def end_message():
@@ -137,7 +136,6 @@ def incorrect_guess():
 # TODO - YES, reveale letter's placement, evaluate full guessed, congratulate user, end game
 def correct_guess(guess_count):
     global guess, word, placeholder, word_leng, word_len_guessed
-    word_len_guessed += 1
     print("You guessed correctly.")
     # SOLVED - Issue with adding guessed charaters to placeholder
     position = 0
@@ -145,12 +143,13 @@ def correct_guess(guess_count):
         position = word.index(guess,position)
         placeholder = placeholder[:position] + guess + placeholder[(position+1):]
         position += 1
+        word_len_guessed += 1
     # SOLVED -Issue with multiple characters in the same word eg. baboon - o
 
 
 # TODO - welcome user, main logic
 print(f"Welcome to the game of handman! Below you will need to figure out a random word by guessing characters in it.\n You will see _ _ representing each character in the word. If the character you choice is in the word, it will be releaved, if you miss, one life will be deduced. \n You have {life} lifes in the beginning, if it reaches 0, you lost. Good luck!")
-while (word_len_guessed != word_leng) or (life != 0):
+while (word_len_guessed != word_leng) and (life != 0):
     guessing()
     char_used()
     char_word_check()
