@@ -96,12 +96,12 @@ def guessing():
     global placeholder, guess
     print(f"Your word: {placeholder}")
 
-    guess = input("Enter your guess character: \n")
+    guess = input("Enter your guess character: \n").lower()
     while len(guess) != 1:
-        guess = input("You need to enter only one character: \n")
+        guess = input("You need to enter only one character: \n").lower()
 
     while not guess.isalpha():
-        guess = input("Please enter valid character: \n")
+        guess = input("Please enter valid character: \n").lower()
 
 
 
