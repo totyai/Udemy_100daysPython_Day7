@@ -148,9 +148,13 @@ def correct_guess(guess_count):
 
 
 # TODO - welcome user, main logic
-print(f"Welcome to the game of handman! Below you will need to figure out a random word by guessing characters in it.\n You will see _ _ representing each character in the word. If the character you choice is in the word, it will be releaved, if you miss, one life will be deduced. \n You have {life} lifes in the beginning, if it reaches 0, you lost. Good luck!")
-while (word_len_guessed != word_leng) and (life != 0):
-    guessing()
-    char_used()
-    char_word_check()
-end_message()
+def main():
+    print(f"Welcome to the game of handman! Below you will need to figure out a random word by guessing characters in it.\n You will see _ _ representing each character in the word. If the character you choice is in the word, it will be releaved, if you miss, one life will be deduced. \n You have {life} lifes in the beginning, if it reaches 0, you lost. Good luck!")
+    while (word_len_guessed != word_leng) and (life != 0):
+        guessing()
+        char_used()
+        char_word_check()
+    end_message()
+
+if __name__ == "__main__":
+    main()
