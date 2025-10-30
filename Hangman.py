@@ -140,11 +140,12 @@ def correct_guess(guess_count):
     word_len_guessed += 1
     print("You guessed correctly.")
     # SOLVED - Issue with adding guessed charaters to placeholder
+    position = 0
     for i in range(0,guess_count):
-        position = word.index(guess,i)
+        position = word.index(guess,position)
         placeholder = placeholder[:position] + guess + placeholder[(position+1):]
-        print(placeholder)
-    # Partally solved (if it comes after another is issue) -Issue with multiple characters in the same word eg. baboon - o
+        position += 1
+    # SOLVED -Issue with multiple characters in the same word eg. baboon - o
 
 
 # TODO - welcome user, main logic
